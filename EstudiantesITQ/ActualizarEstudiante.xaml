@@ -72,14 +72,34 @@
                        Placeholder="Telefono"
                        Keyboard="Numeric"/>
 
+                <Label Text="Ingrese Direccion"
+                       Grid.Row="5"
+                       Grid.Column="0"
+                       FontAttributes="Bold"/>
+                <Entry x:Name="entDireccion"
+                       Grid.Row="5"
+                       Grid.Column="1"
+                       Placeholder="Telefono"
+                       Keyboard="Numeric"/>
+
+                <Label Text="Ingrese Estado"
+                       Grid.Row="6"
+                       Grid.Column="0"
+                       FontAttributes="Bold"/>
+                <Entry x:Name="entEstado"
+                       Grid.Row="6"
+                       Grid.Column="1"
+                       Placeholder="Telefono"
+                       Keyboard="Numeric"/>
+
                 <Button Text="Actualizar"
-                        Grid.Row="5"
+                        Grid.Row="7"
                         Grid.Column="0"
                         x:Name="actualizar"
                         Clicked="actualizar_Clicked"/>
 
                 <Button Text="Regresar"
-                        Grid.Row="5"
+                        Grid.Row="7"
                         Grid.Column="1"
                         x:Name="btnRegreso"
                         Clicked="btnRegreso_Clicked"/>

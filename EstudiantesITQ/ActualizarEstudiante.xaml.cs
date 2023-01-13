@@ -13,17 +13,19 @@ namespace EstudiantesITQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ActualizarEstudiante : ContentPage
     {
-        public const string Url = "http://192.168.173.105/itq/post.php?codigo={0}&nombre={1}&apellido={2}&correo={3}&telefono={4}";
+        public const string Url = "http://192.168.70.135/prueba/post.php?cedulaPaciente={0}&nombrePaciente={1}&apellidoPaciente={2}&correoPaciente={3}&telefonoPaciente={4}&direccionPaciente={5}&estadoPaciente={6}";
 
 
-        public ActualizarEstudiante(int codigo, string nombre, string apellido, string correo, string telefono)
+        public ActualizarEstudiante(int cedula, string nombre, string apellido, string correo, string telefono, string direccion, bool estado)
         {
             InitializeComponent();
-            entCodigo.Text= codigo.ToString();
+            entCodigo.Text= cedula.ToString();
             entNombre.Text= nombre.ToString();
             entApellido.Text= apellido.ToString();
             entCorreo.Text= correo.ToString();
             entTelefono.Text= telefono.ToString();
+            entDireccion.Text = direccion.ToString();
+            entEstado.Text = estado.ToString();
         }
 
         private void actualizar_Clicked(object sender, EventArgs e)
@@ -35,13 +37,12 @@ namespace EstudiantesITQ
                 using (var webClient = new WebClient())
                 {
                     var uri = new Uri(string.Format(Url,
-                    entCodigo.Text, entNombre.Text, entApellido.Text, entCorreo.Text, entTelefono.Text));
+                    entCodigo.Text, entNombre.Text, entApellido.Text, entCorreo.Text, entTelefono.Text, entDireccion.Text, entEstado.Text));
                     webClient.UploadString(uri, "PUT", string.Empty);
 
                     DisplayAlert("Success", "Registro de: " + entNombre.Text + " " + entApellido.Text + " actualizado correctamente", "Cerrar");
                 }
                 
-            
             } catch (Exception ex)
             {
                 DisplayAlert("Alerta", ex.Message, "Cerrar");

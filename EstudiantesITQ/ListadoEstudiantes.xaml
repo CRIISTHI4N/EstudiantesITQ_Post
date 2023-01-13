@@ -20,24 +20,28 @@
                                         <ColumnDefinition Width=".3*"/>
                                         <ColumnDefinition Width=".4*"/>
                                         <ColumnDefinition Width=".5*"/>
+                                        <ColumnDefinition Width=".6*"/>
+                                        <ColumnDefinition Width=".7*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="5*"/>
                                         <RowDefinition Height="2*"/>
                                     </Grid.RowDefinitions>
 
-                                    <Label Text="{Binding codigo}" Grid.Column="0" 
+                                    <Label Text="{Binding cedulaPaciente}" Grid.Column="0" 
                                            FontAttributes="Bold" FontSize="10" />
-                                    <Label Text="{Binding nombre}" Grid.Column="1" 
+                                    <Label Text="{Binding nombrePaciente}" Grid.Column="1" 
                                            FontAttributes="Bold" FontSize="10" />
-                                    <Label Text="{Binding apellido}" Grid.Column="2" 
+                                    <Label Text="{Binding apellidoPaciente}" Grid.Column="2" 
                                            FontAttributes="Bold" FontSize="10" />
-                                    <Label Text="{Binding correo}" Grid.Column="3" 
+                                    <Label Text="{Binding correoPaciente}" Grid.Column="3" 
                                            FontAttributes="Bold" FontSize="10" />
-                                    <Label Text="{Binding telefono}" Grid.Column="4" 
+                                    <Label Text="{Binding telefonoPaciente}" Grid.Column="4" 
                                            FontAttributes="Bold" FontSize="10" />
-
-
+                                    <Label Text="{Binding direccionPaciente}" Grid.Column="5" 
+                                           FontAttributes="Bold" FontSize="10" />
+                                    <Label Text="{Binding estadoPaciente}" Grid.Column="6" 
+                                           FontAttributes="Bold" FontSize="10" />
 
 
 
@@ -48,18 +52,19 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Text="Ingresar nuevo estudiante"
+            <Button Text="Ingresar nuevo paciente"
                     x:Name="btnNuevoEstudiante"
                     Clicked="btnNuevoEstudiante_Clicked"/>
-            <Button Text="Eliminar estudiante"
-                    x:Name="btnElimiarEstudiante"
-                    Clicked="btnElimiarEstudiante_Clicked"/>
-            <Button Text="Actualizar estudiante"
+            <Button Text="Actualizar paciente"
                     x:Name="btnActualizarEstudiante"
-                    Clicked="btnActualizarEstudiante_Clicked"/>
+                    Clicked="btnActualizarEstudiante_Clicked"
+                    />
             <Button Text="Eliminar Estudiante por ID estudiante"
                     x:Name="btnEliminarId"
                     Clicked="btnEliminarId_Clicked"/>
+            <Button Text="CREAR CITA"
+                    x:Name="btnCrearCita"
+                    Clicked="btnCrearCita_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
