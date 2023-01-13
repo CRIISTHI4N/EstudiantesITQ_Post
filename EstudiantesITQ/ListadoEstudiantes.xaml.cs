@@ -14,7 +14,7 @@ namespace EstudiantesITQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListadoEstudiantes : ContentPage
     {
-        private const string Url = "http://192.168.1.11/itq/post.php";
+        private const string Url = "http://192.168.173.105/itq/post.php";
 
         private readonly HttpClient client = new HttpClient();
         private ObservableCollection<Datos> _post;

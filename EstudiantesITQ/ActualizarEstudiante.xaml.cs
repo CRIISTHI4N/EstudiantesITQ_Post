@@ -13,7 +13,7 @@ namespace EstudiantesITQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ActualizarEstudiante : ContentPage
     {
-        public const string Url = "http://192.168.1.11/itq/post.php?codigo={0}&nombre={1}&apellido={2}&correo={3}&telefono{4}";
+        public const string Url = "http://192.168.173.105/itq/post.php?codigo={0}&nombre={1}&apellido={2}&correo={3}&telefono={4}";
 
 
         public ActualizarEstudiante(int codigo, string nombre, string apellido, string correo, string telefono)
@@ -29,8 +29,9 @@ namespace EstudiantesITQ
         private void actualizar_Clicked(object sender, EventArgs e)
         {
 
-            WebClient client= new WebClient();
-            try {
+            WebClient client = new WebClient();
+            try 
+            {
                 using (var webClient = new WebClient())
                 {
                     var uri = new Uri(string.Format(Url,
