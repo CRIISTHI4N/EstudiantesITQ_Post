@@ -14,12 +14,13 @@ namespace EstudiantesITQ
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListadoEstudiantes : ContentPage
     {
-        private const string Url = "http://192.168.173.105/itq/post.php";
+        private const string Url = "http://192.168.70.135/prueba/post.php";
 
         private readonly HttpClient client = new HttpClient();
         private ObservableCollection<Datos> _post;
-        public int codigo = -1;
-        public string nombre, apellido, correo, telefono;
+        public int cedulaPaciente = -1;
+        public string nombre, apellido, correo, telefono, direccion;
+        public bool estado;
 
         private async void btnElimiarEstudiante_Clicked(object sender, EventArgs e)
         {
@@ -30,18 +31,33 @@ namespace EstudiantesITQ
         private void lstEstudiantes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var obj = (Datos)e.SelectedItem;
-            codigo = obj.codigo;
-            nombre = obj.nombre;
-            apellido = obj.apellido;
-            correo = obj.correo;
-            telefono = obj.telefono;
+            cedulaPaciente = obj.cedulaPaciente;
+            nombre = obj.nombrePaciente;
+            apellido = obj.apellidoPaciente;
+            correo = obj.correoPaciente;
+            telefono = obj.telefonoPaciente;
+            direccion = obj.direccionPaciente;
+            estado = obj.estadoPaciente;
         }
+
 
         private async void btnActualizarEstudiante_Clicked(object sender, EventArgs e)
         {
-            if (codigo > 0)
+            if (cedulaPaciente > 0)
             {
-                await Navigation.PushAsync(new ActualizarEstudiante(codigo, nombre, apellido, correo, telefono));
+                await Navigation.PushAsync(new ActualizarEstudiante(cedulaPaciente, nombre, apellido, correo, telefono, direccion, estado));
+            }
+            else
+            {
+                await DisplayAlert("Alerta", "No se ha seleccionado un registro", "OK");
+            }
+        }
+
+        private async void btnCrearCita_Clicked(object sender, EventArgs e)
+        {
+            if (cedulaPaciente > 0)
+            {
+                await Navigation.PushAsync(new CrearCita(cedulaPaciente, nombre));
             }
             else
             {
@@ -51,14 +67,14 @@ namespace EstudiantesITQ
 
         private async void btnEliminarId_Clicked(object sender, EventArgs e)
         {
-            if (codigo > 0)
+            if (cedulaPaciente > 0)
             {
-                string Uri = "http://192.168.1.11/itq/post.php?codigo={0}";
+                string Uri = "http://192.168.70.135/prueba/post.php?cedulaPaciente={0}";
                 try
                 {
 
                     HttpClient client = new HttpClient();
-                    var uri = new Uri(string.Format(Uri, codigo.ToString()));
+                    var uri = new Uri(string.Format(Uri, cedulaPaciente.ToString()));
                     var result = await client.DeleteAsync(uri);
                     if (result.IsSuccessStatusCode)
                     {

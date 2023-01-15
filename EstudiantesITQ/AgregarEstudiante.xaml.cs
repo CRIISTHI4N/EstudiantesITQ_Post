@@ -14,7 +14,7 @@ namespace EstudiantesITQ
     public partial class AgregarEstudiante : ContentPage
     {
 
-        private const string Url = "http://10.20.23.200/itq/post.php";
+        private const string Url = "http://192.168.70.135/prueba/post.php";
 
         public AgregarEstudiante()
         {
@@ -28,14 +28,16 @@ namespace EstudiantesITQ
             try
             {
                 var parameters = new System.Collections.Specialized.NameValueCollection();
-                parameters.Add("codigo", entCodigo.Text);
-                parameters.Add("nombre", entNombre.Text);
-                parameters.Add("apellido", entApellido.Text);
-                parameters.Add("correo", entCorreo.Text);
-                parameters.Add("telefono", entTelefono.Text);
+                parameters.Add("cedulaPaciente", entCedula.Text);
+                parameters.Add("nombrePaciente", entNombre.Text);
+                parameters.Add("apellidoPaciente", entApellido.Text);
+                parameters.Add("correoPaciente", entCorreo.Text);
+                parameters.Add("telefonoPaciente", entTelefono.Text);
+                parameters.Add("direccionPaciente", entDireccion.Text);
+                parameters.Add("estadoPaciente", entEstado.Text);
 
                 client.UploadValues(Url, "POST", parameters);
-                DisplayAlert("Completado", "Estudiante Registrado: " + entNombre + " " + entApellido, "Cerrar");
+                DisplayAlert("Completado", "Paciente Registrado: " + entNombre + " " + entApellido, "Cerrar");
                 Limpiar();
 
             } catch(Exception ex) 
@@ -47,11 +49,13 @@ namespace EstudiantesITQ
 
         public void Limpiar()
         {
-            entCodigo.Text = string.Empty;
+            entCedula.Text = string.Empty;
             entNombre.Text = string.Empty;
             entApellido.Text = string.Empty;
             entCorreo.Text = string.Empty;
             entTelefono.Text = string.Empty;
+            entDireccion.Text = string.Empty;
+            entEstado.Text = string.Empty;
         }
 
         private async void btnRegreso_Clicked(object sender, EventArgs e)
